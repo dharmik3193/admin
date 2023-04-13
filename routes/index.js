@@ -57,7 +57,16 @@ router.post('/add_inquiry', async (req, res) => {
 router.get('/get_inquiry', async (req, res) => {
   var data = await inquirymodel.find();
     res.json(data);
+})
 
+router.get('/get_inquiry/:id', async (req,res)=>{
+  var data = await inquirymodel.findById(req.params.id);
+  res.json(data)
+})
+
+router.post('/update_inquiry/:id', async (req,res)=>{
+    var data = await inquirymodel.findByIdAndUpdate(req.params.id , req.body);
+    res.json(data)
 })
 
 module.exports = router;
